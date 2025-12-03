@@ -1,0 +1,84 @@
+/* Profile Page Layout */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f8ff;
+}
+
+.profile-section {
+    padding: 80px 0;
+}
+
+.profile-card {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar {
+    width: 85px;
+    height: 85px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4C6EF5, #00c6ff);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.muted {
+    color: #777;
+}
+
+.small {
+    font-size: 0.9rem;
+}
+
+.profile-info, .profile-links {
+    margin-top: 25px;
+}
+
+.profile-links ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.profile-links li {
+    margin: 10px 0;
+}
+
+.profile-links a {
+    text-decoration: none;
+    color: #4C6EF5;
+    font-weight: 500;
+}
+
+.profile-links a:hover {
+    text-decoration: underline;
+}
+
+.logout-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px 0;
+    background: #4C6EF5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #3a52c3;
+}

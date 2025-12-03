@@ -1,0 +1,51 @@
+<!DOCTYPE  html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step Ahead</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pathmapping.html">PathMapping</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="nextlens.html">NextLens</a></li>
+                <li><a href="skillswap.html">Skill Swap</a></li>
+            </ul>
+        </nav>
+    </header> <main>
+        <h1>Welcome to Career Development Platform</h1>
+        <button>Start Self Assessment</button>
+        <div class="cards">
+            <div class="card">
+                <h2>PathMapping</h2>
+                <p>Explore your career path</p>
+                <a href="pathmapping.html">Explore</a>
+            </div>
+            <div class="card">
+                <h2>NextLens</h2>
+                <p>Stay ahead of the curve</p>
+                <a href="nextlens.html">Explore</a>
+            </div>
+             <div class="card">
+                <h2>Skill Swap</h2>
+                <p>Learn from others, teach others</p>
+                <a href="skillswap.html">Explore</a>
+            </div>
+            <div class="card">
+                <h2>Profile</h2>
+                <p>View your profile</p>
+                <a href="profile.html">View</a>
+            </div>
+        </div>
+        <p id="daily-tip"></p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

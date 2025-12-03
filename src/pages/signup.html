@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup / Login</title>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#36d1dc,#5b86e5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Design */
+.container{
+    width: 380px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+
+.title{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-box{
+    margin-top: 12px;
+}
+
+.input-box label{
+    font-size: 14px;
+    color: #555;
+}
+
+.input-box input{
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+.input-box input:focus{
+    border-color: #36d1dc;
+    box-shadow: 0 0 5px #36d1dc;
+}
+
+.btn{
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #36d1dc;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: #2bb4c7;
+}
+
+.link{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #444;
+}
+
+.link span{
+    color: #36d1dc;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.hidden{
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIGNUP FIRST -->
+    <div id="signup-box">
+        <h2 class="title">Create Account</h2>
+
+        <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" id="signupName" placeholder="Enter your full name">
+        </div>
+
+        <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="signupEmail" placeholder="Enter your email">
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" id="signupPassword" placeholder="Create password">
+        </div>
+
+        <button class="btn" onclick="signup()">Sign Up</button>
+
+        <p class="link">Already have an account?
+            <span onclick="showLogin()">Login</span>
+        </p>
+    </div>
+
+    <!-- LOGIN (Hidden by default) -->
+    <div id="login-box" class="hidden">
+        <h2 class="title">Login</h2>
+
+        <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="loginEmail" placeholder="Enter email">
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password">
+        </div>
+
+        <button class="btn" onclick="login()">Login</button>
+
+        <p class="link">Don't have an account?
+            <span onclick="showSignup()">Sign Up</span>
+        </p>
+    </div>
+
+</div>
+
+<script>
+function showLogin(){
+    document.getElementById("signup-box").classList.add("hidden");
+    document.getElementById("login-box").classList.remove("hidden");
+}
+
+function showSignup(){
+    document.getElementById("login-box").classList.add("hidden");
+    document.getElementById("signup-box").classList.remove("hidden");
+}
+
+function signup(){
+    let name = document.getElementById("signupName").value;
+    let email = document.getElementById("signupEmail").value;
+    let pass = document.getElementById("signupPassword").value;
+
+    if(name === "" || email === "" || pass === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    alert("Account Created Successfully!");
+}
+
+function login(){
+    let email = document.getElementById("loginEmail").value;
+    let pass = document.getElementById("loginPassword").value;
+
+    if(email === "" || pass === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    alert("Login Successful!");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    background: #0f1115;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+/* Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 40px;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.clear-btn {
+    background: #4d6aff;
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* Title section */
+.title-section {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.title-section h1 {
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.title-section p {
+    margin-top: -5px;
+    color: #a9b4c9;
+    font-size: 18px;
+}
+
+/* Chat Card */
+.chat-card {
+    width: 90%;
+    max-width: 1100px;
+    background: #1b1f23;
+    margin: 40px auto;
+    padding: 40px 30px;
+    border-radius: 25px;
+    border: 1px solid #3a4047;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    height: 350px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Message styling */
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.ai-icon {
+    width: 32px;
+    margin-right: 12px;
+}
+
+.bubble {
+    background: #3a3f46;
+    padding: 15px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+    color: white;
+    max-width: 60%;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    margin-top: 20px;
+    background: #2a2f35;
+    border-radius: 14px;
+    padding: 12px 16px;
+    align-items: center;
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: white;
+}
+
+.mic-btn, .send-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.mic-icon {
+    width: 26px;
+    opacity: 0.9;
+}
+
+.send-icon {
+    width: 28px;
+}
+
+
+

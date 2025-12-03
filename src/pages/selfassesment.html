@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>3-Set Career Quiz</title>
+  <link rel="stylesheet" href="selfassesment.css">
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <!-- Top Heading -->
+    <header style="margin-bottom:20px">
+      <h1>Career Quick Quiz</h1>
+      <div class="subtitle">3 short sets → Instant result after each set</div>
+    </header>
+
+    <!-- QUIZ CARD -->
+    <div class="card" id="app">
+
+      <!-- Stage + Progress -->
+      <div style="display:flex;align-items:center;gap:8px;min-width:280px;margin-bottom:15px">
+        <div class="chip" id="stageLabel">Set 1 — Interests</div>
+        <div class="progress"><div class="bar" id="prog"></div></div>
+        <div style="min-width:36px;text-align:right" id="qCount">0/5</div>
+      </div>
+
+      <!-- Question area (script injects here) -->
+      <section id="questionArea"></section>
+
+      <!-- Result area -->
+      <section id="resultArea" class="hidden"></section>
+
+      <!-- Buttons -->
+      <div class="controls">
+        <button class="btn ghost" id="prevBtn">Back</button>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <button class="btn ghost" id="skipBtn">Skip</button>
+          <button class="btn" id="nextBtn">Next</button>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      Tip: Keep answers honest — the magic is in patterns, not perfection.
+    </footer>
+
+  </div>
+
+  <script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>

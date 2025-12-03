@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLens AI</title>
+    <link rel="stylesheet" href="nextlense.css">
+</head>
+
+<body>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <h2 class="logo">NextLens AI</h2>
+        <button class="clear-btn" id="clearChat">Clear Chat</button>
+    </header>
+
+    <!-- Title Section -->
+    <section class="title-section">
+        <h1>Chat with NextLens AI</h1>
+        <p>your personal skill navigator!</p>
+    </section>
+
+    <!-- Chat Card -->
+    <div class="chat-card">
+
+        <div class="messages" id="messages">
+            <!-- Default AI Message -->
+            <div class="message ai">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" 
+                     class="ai-icon">
+                <div class="bubble">
+                    “Tell me your field or interest — and I’ll instantly
+                    show you the trending skills, courses, and tools.”
+                </div>
+            </div>
+        </div>
+
+        <!-- Input box -->
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Enter your message........">
+            <button class="mic-btn" id="voiceBtn">
+                <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" class="mic-icon">
+            </button>
+            <button class="send-btn" id="sendBtn">
+                <img src="https://cdn-icons-png.flaticon.com/512/724/724954.png" class="send-icon">
+            </button>
+        </div>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
