@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PathMapping - Career Roadmap</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#f0f8ff;
+    color:#333;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+/* Header */
+header{
+    background:#4C6EF5;
+    color:#fff;
+    padding:20px 0;
+    text-align:center;
+    font-size:1.8rem;
+    font-weight:700;
+}
+
+/* User selection buttons */
+.user-selection{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:40px 0;
+}
+
+.user-selection button{
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    background:#4C6EF5;
+    color:#fff;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.user-selection button:hover{
+    background:#3b50c4;
+}
+
+/* Field / Goal section */
+.selection-section{
+    margin:30px 0;
+    display:none;
+    text-align:center;
+}
+
+.selection-section select{
+    padding:12px 15px;
+    font-size:1rem;
+    border-radius:8px;
+    border:1px solid #ccc;
+    margin:10px;
+}
+
+/* Roadmap section */
+#roadmap{
+    margin:30px 0;
+    display:none;
+}
+
+.roadmap-step{
+    background:#fff;
+    padding:20px;
+    margin:15px 0;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.roadmap-step:hover{
+    transform: translateY(-5px);
+}
+
+.step-number{
+    background:#4C6EF5;
+    color:#fff;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:15px;
+    text-align:center;
+    font-weight:700;
+}
+
+h2.section-title{
+    text-align:center;
+    margin-bottom:20px;
+    font-size:2rem;
+    color:#4C6EF5;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .user-selection{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>StepAhead PathMapping</header>
+
+<div class="container">
+    <h2 class="section-title">Select User Type</h2>
+    <div class="user-selection">
+        <button onclick="selectUser('student')">Student</button>
+        <button onclick="selectUser('employee')">Employee</button>
+    </div>
+
+    <!-- Student Section -->
+    <div class="selection-section" id="studentSection">
+        <h3>Select Field of Interest</h3>
+        <select id="studentField" onchange="showStudentGoals()">
+            <option value="">--Choose Field--</option>
+            <option value="science">Science / Medical</option>
+            <option value="engineering">Engineering</option>
+            <option value="commerce">Commerce</option>
+            <option value="arts">Arts</option>
+        </select>
+
+        <div id="studentGoals" style="margin-top:20px; display:none;">
+            <h3>Select Your Goal</h3>
+            <select id="goalSelect" onchange="showRoadmap()">
+                <option value="">--Choose Goal--</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Employee Section -->
+    <div class="selection-section" id="employeeSection">
+        <h3>Current Position / Skill Level</h3>
+        <select id="employeeCurrent" onchange="showEmployeeGoals()">
+            <option value="">--Choose--</option>
+            <option value="junior">Junior Developer</option>
+            <option value="mid">Mid-level Employee</option>
+            <option value="senior">Senior Employee</option>
+        </select>
+
+        <div id="employeeGoals" style="margin-top:20px; display:none;">
+            <h3>Select Target Goal</h3>
+            <select id="employeeGoalSelect" onchange="showEmployeeRoadmap()">
+                <option value="">--Choose Goal--</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Roadmap -->
+    <div id="roadmap">
+        <h2 class="section-title">Your Career Roadmap</h2>
+        <div id="roadmapSteps"></div>
+    </div>
+</div>
+
+<script>
+// Data for students
+const studentData = {
+    science: {
+        doctor: [
+            "Complete 12th Science (Biology)",
+            "Appear for Medical Entrance Exam (e.g., NEET)",
+            "Complete MBBS",
+            "Internship / Residency",
+            "Specialization (optional)",
+            "Start Professional Practice"
+        ],
+        scientist: [
+            "Complete 12th Science",
+            "Graduate in B.Sc / B.Tech",
+            "Master's in relevant field",
+            "Join research projects",
+            "PhD (optional)",
+            "Work in Research / Labs"
+        ]
+    },
+    engineering: {
+        engineer: [
+            "Complete 12th (Science / PCM)",
+            "Appear for JEE / Entrance Exam",
+            "Complete B.Tech / B.E",
+            "Internships and projects",
+            "Apply for Jobs in engineering field"
+        ]
+    },
+    commerce: {
+        accountant: [
+            "Complete 12th Commerce",
+            "Bachelor in Commerce (B.Com)",
+            "Internship in Accounting Firm",
+            "CPA / CA (optional)",
+            "Work as Accountant / Auditor"
+        ]
+    }
+};
+
+// Data for employees
+const employeeData = {
+    junior: {
+        teamLead: [
+            "Gain experience in projects",
+            "Learn leadership and management skills",
+            "Handle small team projects",
+            "Apply for Team Lead positions"
+        ]
+    },
+    mid: {
+        manager: [
+            "Lead medium scale projects",
+            "Mentor junior employees",
+            "Enhance strategic skills",
+            "Apply for Manager position"
+        ]
+    }
+};
+
+function selectUser(type){
+    document.getElementById("roadmap").style.display = "none";
+    if(type==="student"){
+        document.getElementById("studentSection").style.display = "block";
+        document.getElementById("employeeSection").style.display = "none";
+    } else{
+        document.getElementById("employeeSection").style.display = "block";
+        document.getElementById("studentSection").style.display = "none";
+    }
+}
+
+// Show goals for student based on field
+function showStudentGoals(){
+    const field = document.getElementById("studentField").value;
+    const goalSelect = document.getElementById("goalSelect");
+    goalSelect.innerHTML = '<option value="">--Choose Goal--</option>';
+
+    if(studentData[field]){
+        for(const goal in studentData[field]){
+            const opt = document.createElement("option");
+            opt.value = goal;
+            opt.innerText = goal.charAt(0).toUpperCase() + goal.slice(1);
+            goalSelect.appendChild(opt);
+        }
+        document.getElementById("studentGoals").style.display = "block";
+    } else{
+        document.getElementById("studentGoals").style.display = "none";
+    }
+}
+
+// Show roadmap for selected student goal
+function showRoadmap(){
+    const field = document.getElementById("studentField").value;
+    const goal = document.getElementById("goalSelect").value;
+    const roadmap = document.getElementById("roadmapSteps");
+    roadmap.innerHTML = "";
+
+    if(studentData[field] && studentData[field][goal]){
+        studentData[field][goal].forEach((step, index)=>{
+            const div = document.createElement("div");
+            div.className = "roadmap-step";
+            div.innerHTML = `<span class="step-number">${index+1}</span>${step}`;
+            roadmap.appendChild(div);
+        });
+        document.getElementById("roadmap").style.display = "block";
+    }
+}
+
+// Employee goals
+function showEmployeeGoals(){
+    const current = document.getElementById("employeeCurrent").value;
+    const goalSelect = document.getElementById("employeeGoalSelect");
+    goalSelect.innerHTML = '<option value="">--Choose Goal--</option>';
+
+    if(employeeData[current]){
+        for(const goal in employeeData[current]){
+            const opt = document.createElement("option");
+            opt.value = goal;
+            opt.innerText = goal.charAt(0).toUpperCase() + goal.slice(1);
+            goalSelect.appendChild(opt);
+        }
+        document.getElementById("employeeGoals").style.display = "block";
+    } else{
+        document.getElementById("employeeGoals").style.display = "none";
+    }
+}
+
+function showEmployeeRoadmap(){
+    const current = document.getElementById("employeeCurrent").value;
+    const goal = document.getElementById("employeeGoalSelect").value;
+    const roadmap = document.getElementById("roadmapSteps");
+    roadmap.innerHTML = "";
+
+    if(employeeData[current] && employeeData[current][goal]){
+        employeeData[current][goal].forEach((step, index)=>{
+            const div = document.createElement("div");
+            div.className = "roadmap-step";
+            div.innerHTML = `<span class="step-number">${index+1}</span>${step}`;
+            roadmap.appendChild(div);
+        });
+        document.getElementById("roadmap").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
